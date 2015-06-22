@@ -7,7 +7,3 @@ exports.isPangram = function(string){
     }
      return 26 === Object.keys(associativeArray).length ? true : false;
 };
-
-// function isPangram(string){
-//     return false;
-// }
