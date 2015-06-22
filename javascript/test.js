@@ -2,6 +2,7 @@ var assert = require("/usr/local/lib/node_modules/chai").assert;
 var cipher = require('./cipher.js');
 var phoneNumber = require('./createPhoneNumber.js');
 var creditcardvalidation = require('./creditcardvalidator.js');
+var pangramChecker = require('./pangramChecker.js');
 
 describe("Kata testing...", function(){
     describe("Simple Substitution Cipher", function(){
@@ -53,6 +54,15 @@ describe("Kata testing...", function(){
         it('Test validating using 1,2,3,0', function(){
             var number = 1230;
             assert.isTrue(creditcardvalidation.validate(number));
+        });
+    });
+
+    describe("Pangram checker", function(){
+        it("Test basic string", function(){
+            var string = "The quick brown fox jumps over the lazy dog.";
+            assert.equal(pangramChecker.isPangram(string), true);
+            string = "This is not a pangram.";
+            assert.equal(pangramChecker.isPangram(string), false);
         });
     });
 });
