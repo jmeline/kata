@@ -3,10 +3,11 @@ var cipher = require('./cipher.js');
 var phoneNumber = require('./createPhoneNumber.js');
 var creditcardvalidation = require('./creditcardvalidator.js');
 var pangramChecker = require('./pangramChecker.js');
+var vector = require('./vector.js');
 
 describe("Kata testing...", function(){
-    describe("Simple Substitution Cipher", function(){
         // Runs before all tests in this block
+    describe("Simple Substitution Cipher", function(){
         var sub;
         before(function(){
             var abc1 = "abcdefghijklmnopqrstuvwxyz";
@@ -63,6 +64,43 @@ describe("Kata testing...", function(){
             assert.equal(pangramChecker.isPangram(string), true);
             string = "This is not a pangram.";
             assert.equal(pangramChecker.isPangram(string), false);
+        });
+    });
+    describe("Vector Class", function(){
+        it("Test that [1,2,3] + [3,4,5] = [4,6,8]", function(){
+            vec = new vector.Vector([1,2,3]);
+            vec2 = new vector.Vector([3,4,5]);
+            assert.equal(vec.add(vec2), [4,6,8].toString());
+        });
+        it("Test that [1,2] + [3,4] = [4,6]", function(){
+            vec = new vector.Vector([1,2]);
+            vec2 = new vector.Vector([3,4]);
+            assert.equal(vec.add(vec2), [4,6].toString());
+        });
+        it("Test that [1,2] - [3,4] = [-2,-2]", function(){
+            vec = new vector.Vector([1,2]);
+            vec2 = new vector.Vector([3,4]);
+            assert.equal(vec.subtract(vec2), [-2,-2].toString());
+        });
+        it("Test that [1,2,3] - [3,4,5] = [-2,-2,-2]", function(){
+            vec = new vector.Vector([1,2,3]);
+            vec2 = new vector.Vector([3,4,5]);
+            assert.equal(vec.subtract(vec2), [-2,-2,-2].toString());
+        });
+
+        it("Test that [1,2] dot [3,4] = 11", function(){
+            vec = new vector.Vector([1,2]);
+            vec2 = new vector.Vector([3,4]);
+            assert.equal(vec.dot(vec2), 11);
+        });
+        it("Test that [1,2,3] dot [-2, 0, 5] = 13", function(){
+            vec = new vector.Vector([1,2,3]);
+            vec2 = new vector.Vector([-2, 0, 5]);
+            assert.equal(vec.dot(vec2), 13);
+        });
+        it("Test that [1,2,3] normalized = sqrt(14)", function(){
+            vec = new vector.Vector([1,2,3]);
+            assert.equal(vec.norm(), Math.sqrt(14));
         });
     });
 });
