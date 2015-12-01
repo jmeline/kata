@@ -6,9 +6,9 @@ exports.validate = function(n){
     var arrayOfIntegers = convertInt2IntArray(n);
     var length = arrayOfIntegers.length;
 
-    console.log("Results: " + arrayOfIntegers);
+    // console.log("Results: " + arrayOfIntegers);
     var addArrayElements = function (tmp){
-        console.log("tmp: " + tmp + " length: " + tmp.length);
+        // console.log("tmp: " + tmp + " length: " + tmp.length);
         var total = 0;
         for(var i = 0; i < tmp.length; i++)
             total += tmp[i];
@@ -30,9 +30,9 @@ exports.validate = function(n){
         return new_value;
     });
 
-    console.log(modifiedArray);
+    // console.log(modifiedArray);
     total = addArrayElements(modifiedArray);
-    console.log(total);
+    // console.log(total);
     return total % 10 === 0;
 };
 

@@ -1,11 +1,11 @@
 exports.SubstitutionCipher = function(abc1, abc2) {
     this.encode = function (str) {
         var output = "";
-        console.log(str);
+        // console.log(str);
         for(var i = 0; i < str.length; ++i){
             var tmp = abc2[abc1.indexOf(str[i])];
             tmp = undefined === tmp ? -1 : tmp;
-            console.log("tmp: " + tmp);
+            // console.log("tmp: " + tmp);
             if ( tmp !== -1) {
                 output += tmp;
             }
@@ -17,7 +17,7 @@ exports.SubstitutionCipher = function(abc1, abc2) {
     }
     this.decode = function (str) {
         var output = "";
-        console.log(str);
+        // console.log(str);
         for( var i = 0; i < str.length; ++i) {
             var tmp = abc1[abc2.indexOf(str[i])] || -1;
             tmp = undefined === tmp ? -1 : tmp;

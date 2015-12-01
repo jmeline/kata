@@ -1,16 +1,16 @@
-var assert = require("/usr/local/lib/node_modules/chai").assert;
-var cipher = require('./cipher.js');
-var phoneNumber = require('./createPhoneNumber.js');
-var creditcardvalidation = require('./creditcardvalidator.js');
-var pangramChecker = require('./pangramChecker.js');
-var vector = require('./vector.js');
+var assert = require("/usr/lib/node_modules/chai").assert;
+var cipher = require('../cipher.js');
+var phoneNumber = require('../createPhoneNumber.js');
+var creditcardvalidation = require('../creditcardvalidator.js');
+var pangramChecker = require('../pangramChecker.js');
+var vector = require('../vector.js');
 
 describe("Kata testing...", function(){
         // Runs before all tests in this block
     describe("Simple Substitution Cipher", function(){
         var sub;
         before(function(){
-            var abc1 = "abcdefghijklmnopqrstuvwxyz";
+            var abc1 = "abcdefghijklmnopqrstuvwxyzi";
             var abc2 = "etaoinshrdlucmfwypvbgkjqxz";
             sub = new cipher.SubstitutionCipher(abc1, abc2);
         });
@@ -68,24 +68,24 @@ describe("Kata testing...", function(){
     });
     describe("Vector Class", function(){
         it("Test that [1,2,3] + [3,4,5] = [4,6,8]", function(){
-            vec = new vector.Vector([1,2,3]);
-            vec2 = new vector.Vector([3,4,5]);
-            assert.equal(vec.add(vec2), [4,6,8].toString());
+            var vec = new vector.Vector([1,2,3]);
+            var vec2 = new vector.Vector([3,4,5]);
+            assert.isTrue(vec.add(vec2).equals(new vector.Vector([4,6,8])));
         });
         it("Test that [1,2] + [3,4] = [4,6]", function(){
             vec = new vector.Vector([1,2]);
             vec2 = new vector.Vector([3,4]);
-            assert.equal(vec.add(vec2), [4,6].toString());
+            assert.isTrue(vec.add(vec2).equals(new vector.Vector([4,6])));
         });
         it("Test that [1,2] - [3,4] = [-2,-2]", function(){
             vec = new vector.Vector([1,2]);
             vec2 = new vector.Vector([3,4]);
-            assert.equal(vec.subtract(vec2), [-2,-2].toString());
+            assert.isTrue(vec.subtract(vec2).equals(new vector.Vector([-2,-2])));
         });
         it("Test that [1,2,3] - [3,4,5] = [-2,-2,-2]", function(){
             vec = new vector.Vector([1,2,3]);
             vec2 = new vector.Vector([3,4,5]);
-            assert.equal(vec.subtract(vec2), [-2,-2,-2].toString());
+            assert.isTrue(vec.subtract(vec2).equals(new vector.Vector([-2,-2,-2])));
         });
 
         it("Test that [1,2] dot [3,4] = 11", function(){
