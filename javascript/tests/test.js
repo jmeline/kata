@@ -4,9 +4,30 @@ var phoneNumber = require('../createPhoneNumber.js');
 var creditcardvalidation = require('../creditcardvalidator.js');
 var pangramChecker = require('../pangramChecker.js');
 var vector = require('../vector.js');
+var arrayFunctions = require('../allNoneAny');
 
 describe("Kata testing...", function(){
         // Runs before all tests in this block
+    describe("All, None, & Any:", function(){
+        var isGreaterThanZero = function(num){ return num > 0; }
+        var isLessThanZero = function(num){ return num < 0; }
+
+        it('Is all greater than Zero', function(){
+            assert.isTrue([1,2,3].all(isGreaterThanZero), 'All are greater than zero');
+            assert.isTrue(![-1,0,2].all(isGreaterThanZero), 'One is less than zero');
+        });
+        it('Is none greater than Zero', function(){
+            assert.isTrue([-1,-2,-3].none(isGreaterThanZero), 'None are greater than zero');
+        });
+        it('Is any greater than Zero', function(){
+            assert.isTrue([-1,2,3].any(isGreaterThanZero), 'Two are greater than zero');
+            assert.isTrue(![-1,-2,-3].any(isGreaterThanZero), 'None are greater than zero');
+        });
+        it('Is none less than Zero', function(){
+            assert.isTrue(![-1,2,3].none(isLessThanZero), 'One is less than zero');
+        });
+
+    });
     describe("Simple Substitution Cipher", function(){
         var sub;
         before(function(){
