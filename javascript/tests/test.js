@@ -148,7 +148,8 @@ describe("Kata testing...", function(){
 
         it("Presented", function(){
             assert.equal(ZZ.gueZZ([1,5,8]), 70, 'Wrong guessed number');
-            // assert.equal(JSON.stringify(ZZ.getMagicZindex(70).sort(nCompare)), JSON.stringify([1,5,8]), 'Wrong index list');
+            assert.equal(ZZ.gueZZ([1,1,1]), undefined, 'Wrong guessed number');
+            assert.equal(JSON.stringify(ZZ.getMagicZindex(70).sort(nCompare)), JSON.stringify([1,5,8]), 'Wrong index list');
         });
     });
 });
