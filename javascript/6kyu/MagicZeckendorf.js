@@ -14,17 +14,80 @@ var MagicZ = function(){
 
     this.gueZZ = function(indexes)
     {
-        console.log("Hello world");
+        var expectedLength = indexes.length;
+        if(indexes.length == 0) return;
+        var map = {};
         for(var i = 0; i < indexes.length; i++){
-            console.log(indexes[i]);
+            if(map[indexes[i]]) return;
+            map[indexes[i]] = true;
         }
 
-        //Your Code Here
+        var allNums = [];
+        var smallestListOfNumbers = 100000;
+
+        for(var i = 0; i < indexes.length; i++){
+            if (cards[indexes[i]].length < smallestListOfNumbers)
+                smallestListOfNumbers = indexes[i];
+        }
+
+        var cardsOfSmallestList = cards[indexes[smallestListOfNumbers]];
+        indexes.splice(smallestListOfNumbers, 1);
+
+        for(var i = 0; i < cardsOfSmallestList.length; i++){
+            allNums.push(cardsOfSmallestList[i]);
+        }
+
+        for (var i = 0; i < indexes.length; i++)
+        {
+            var cardsToInspect = cards[indexes[i]];
+            for (var j = 0; j < cardsToInspect.length; j++)
+            {
+                if (allNums.indexOf(cardsToInspect[j]) != -1)
+                {
+                    allNums.push(cardsToInspect[j]);
+                }
+            }
+        }
+
+        var obj = {};
+        for (var i = 0; i < allNums.length; i++)
+        {
+            obj[allNums[i]] = (obj[allNums[i]] || 0) + 1;
+        }
+
+        // console.log(obj);
+
+        // console.log("allNums: " + allNums.sort());
+        var possibleValues = [];
+        for(var k in obj)
+        {
+            if(obj[k] >= expectedLength )
+                possibleValues.push(k);
+        }
+        // console.log("possibleValues: " + possibleValues);
+        return possibleValues[0];
+
     }
 
     this.getMagicZindex = function(n)
     {
         //Your Code Here
+        if(n < 0)
+            return;
+        result = [];
+        for(var i = 0; i < cards.length; i++){
+            for(var j = 0; j < cards[i].length; j++)
+            {
+                var cardNumber = cards[i][j];
+                if( cardNumber == n)
+                {
+                    result.push(i);
+                }
+            }
+        }
+
+        console.log("result: " + result);
+        return result;
     }
 
 };
