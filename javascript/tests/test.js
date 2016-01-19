@@ -6,6 +6,7 @@ var pangramChecker = require('../pangramChecker.js');
 var vector = require('../vector.js');
 var arrayFunctions = require('../allNoneAny');
 var regexBasics = require('../7kyu/regexpbasics.js');
+var benefactor = require('../7kyu/lookingForABenefactor.js');
 var magicZ = require('../6kyu/MagicZeckendorf.js');
 
 describe("Kata testing...", function(){
@@ -138,7 +139,6 @@ describe("Kata testing...", function(){
             assert.equal("\t \n\r\n ".whitespace(), true);
             assert.equal("\n\r\n\r ".whitespace(), true);
             assert.equal("\n\r\n\r 3".whitespace(), false);
-
         });
     });
 
@@ -152,4 +152,15 @@ describe("Kata testing...", function(){
             assert.equal(JSON.stringify(ZZ.getMagicZindex(70).sort(nCompare)), JSON.stringify([1,5,8]), 'Wrong index list');
         });
     });
+
+    describe("7Kyu - Looking for a benefactor", function(){
+        var newAvg = benefactor.Benefactor;
+
+        it('Basic Tests', function() {
+            assert.equal(newAvg([14,30,5,7,9,11,16], 90), 628);
+            assert.equal(newAvg([14,30,5,7,9,11,15], 92), 645);
+            assert.throw(function() {newAvg([14, 30, 5, 7, 9, 11, 15], 2)}, "RangeError");
+        });
+    });
 });
+
