@@ -50,23 +50,31 @@ count = txt.readline.to_i
 
 values = []
 while count > 0
-  line = txt.readline
-  puts line
-  values.push(line)
+  hashResult = {}
+  hashResult['value'] = txt.readline
+  hashResult['max'] = -1
+  hashResult['result'] = ''
+  values.push(hashResult)
   count -= 1
 end
 
 while (line = file.gets)
-  values.each do |i|
+  values.each do |item|
     isValid = true
-    i.split("").each do |chr|
+    item['value'].split("").each do |chr|
       if !line.include? chr
         isValid = false
       end
     end
     if isValid
-      print i, " = ", line
+      if item['max'] < line.length
+        item['max'] = line.length
+        item['result'] = line
+      end
     end
   end
 end
 
+values.each do |item|
+  puts "Value: #{item['value']} Max: #{item['max']} Result: #{item['result']}"
+end
