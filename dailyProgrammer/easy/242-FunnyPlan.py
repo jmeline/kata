@@ -56,21 +56,23 @@
 #  Have a good challenge idea? Consider submitting it to /r/dailyprogrammer_ideas
 
 import sys
-
 def SurvivalCalculator(people, fruit):
-    weeks = 1
-    plants = 1
-    currentFruit = 0
+  print("---------------------------------")
+  print("people: ", people, " fruit: ", fruit)
+  print("---------------------------------")
+  week = 1
+  total = 0
+  plants = fruit
+  while total < people:
+    total += fruit
+    fruit += total
+    week += 1
 
-    while currentFruit < people:
-        print("weeks: ", weeks, " plants: ", plants, " currentFruit: ", currentFruit)
-        plants += currentFruit
-        currentFruit += plants
-        weeks += 1
+  print ("people: ", people, " weeks: ", week, " fruit: ", fruit, " total: ", total)
 
 if __name__ == '__main__':
-    people, fruits = [-1,-1]
-    if len(sys.argv[1:]) == 2:
-        people, fruits = sys.argv[1:]
-        print("people: ", people, "\nfruits: ", fruits)
-    SurvivalCalculator(int(people), int(fruits))
+  people, fruits = [100,1]
+  if len(sys.argv[1:]) == 2:
+    people, fruits = sys.argv[1:]
+    print("people: ", people, "\nfruits: ", fruits)
+  SurvivalCalculator(int(people), int(fruits))
