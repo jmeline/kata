@@ -40,8 +40,8 @@
 #######
 #This challenge was inspired by /u/ThinkinWithSand, many thanks! If you have any ideas, please share them on /r/dailyprogrammer_ideas and there's a chance we'll use it.
 
-filename = './237-input_1'
-# filename2 = './237-input_2'
+# filename = './237-input_1'
+filename = './237-input_2'
 dictionary = '../files/enable1.txt'
 
 file = File.new(dictionary, 'r')
