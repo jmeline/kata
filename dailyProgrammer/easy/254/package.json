@@ -1,0 +1,19 @@
+{
+  "name": "atbashcipher",
+  "version": "1.0.0",
+  "description": "Daily Programmer",
+  "main": "AtbashCipher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
