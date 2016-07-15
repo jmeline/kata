@@ -55,16 +55,12 @@ var MagicZ = function(){
             obj[allNums[i]] = (obj[allNums[i]] || 0) + 1;
         }
 
-        // console.log(obj);
-
-        // console.log("allNums: " + allNums.sort());
         var possibleValues = [];
         for(var k in obj)
         {
             if(obj[k] >= expectedLength )
                 possibleValues.push(k);
         }
-        // console.log("possibleValues: " + possibleValues);
         return possibleValues[0];
 
     }
@@ -86,7 +82,6 @@ var MagicZ = function(){
             }
         }
 
-        console.log("result: " + result);
         return result;
     }
 

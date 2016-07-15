@@ -1,12 +1,10 @@
-var assert = require("/usr/lib/node_modules/chai").assert;
+var assert = require("../node_modules/chai").assert;
 var cipher = require('../cipher.js');
 var phoneNumber = require('../createPhoneNumber.js');
 var creditcardvalidation = require('../creditcardvalidator.js');
 var pangramChecker = require('../pangramChecker.js');
 var vector = require('../vector.js');
 var arrayFunctions = require('../allNoneAny');
-var regexBasics = require('../7kyu/regexpbasics.js');
-var benefactor = require('../7kyu/lookingForABenefactor.js');
 var magicZ = require('../6kyu/MagicZeckendorf.js');
 
 describe("Kata testing...", function(){
@@ -38,7 +36,6 @@ describe("Kata testing...", function(){
             var abc2 = "etaoinshrdlucmfwypvbgkjqxz";
             sub = new cipher.SubstitutionCipher(abc1, abc2);
         });
-        // console.log(sub);
         describe("Test Substitution Cipher Encoding...", function(){
             it('Encoding examples', function(){
                 assert.equal(sub.encode("abc"), "eta");
@@ -127,20 +124,6 @@ describe("Kata testing...", function(){
             assert.equal(vec.norm(), Math.sqrt(14));
         });
     });
-    describe("Regex Basics - Is it all whitespace", function(){
-        it('Does it pass basic whitespace example?', function(){
-            assert.equal("".whitespace(), true);
-            assert.equal(" ".whitespace(), true);
-            assert.equal("\n\r\n\r".whitespace(), true);
-            assert.equal("a".whitespace(), false);
-            assert.equal("w\n".whitespace(), false);
-            assert.equal("\t".whitespace(), true);
-            assert.equal(" a\n".whitespace(), false);
-            assert.equal("\t \n\r\n ".whitespace(), true);
-            assert.equal("\n\r\n\r ".whitespace(), true);
-            assert.equal("\n\r\n\r 3".whitespace(), false);
-        });
-    });
 
     describe("Magic Zeckendorf", function(){
         var ZZ = new magicZ.MagicZ();
@@ -153,14 +136,5 @@ describe("Kata testing...", function(){
         });
     });
 
-    describe("7Kyu - Looking for a benefactor", function(){
-        var newAvg = benefactor.Benefactor;
-
-        it('Basic Tests', function() {
-            assert.equal(newAvg([14,30,5,7,9,11,16], 90), 628);
-            assert.equal(newAvg([14,30,5,7,9,11,15], 92), 645);
-            assert.throw(function() {newAvg([14, 30, 5, 7, 9, 11, 15], 2)}, "RangeError");
-        });
-    });
 });
 

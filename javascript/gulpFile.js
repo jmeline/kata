@@ -3,8 +3,8 @@ var mocha = require('gulp-mocha');
 
 var config = {
     paths: {
-        testjs: './tests/test.js',
-        files: './*.js'
+      testjs: ['./tests/test.js', './tests/7kyu.js'],
+      files: './*.js'
     }
 };
 
