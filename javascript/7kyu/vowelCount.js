@@ -8,4 +8,8 @@ var getCount = function(str) {
   }, 0);
 };
 
+// best answer was
+// function getCount(str) {
+//   return (str.match(/[aeiou]/ig)||[]).length;
+// }
 exports.getCount = getCount;
