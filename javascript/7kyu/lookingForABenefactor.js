@@ -7,4 +7,4 @@ var Benefactor = function(arr, newavg){
     throw "RangeError";
 };
 
-exports.Benefactor= Benefactor;
+exports.benefactor = Benefactor;
