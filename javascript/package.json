@@ -4,7 +4,8 @@
   "description": "A collection of solutions from codewars, etc",
   "main": "test.js",
   "scripts": {
-    "mocha": "mocha -c ./tests/6kyu.js ./tests/7kyu.js"
+    "mocha": "mocha --reporter nyan -c ./tests/6kyu.js ./tests/7kyu.js",
+    "mocha-w": "mocha -w --reporter nyan -c ./tests/6kyu.js ./tests/7kyu.js"
   },
   "author": "",
   "license": "ISC",

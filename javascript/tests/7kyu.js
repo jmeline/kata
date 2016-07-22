@@ -3,8 +3,18 @@ var regexBasics = require('../7kyu/regexpbasics.js');
 var vowelCount = require('../7kyu/vowelCount.js');
 var benefactor = require('../7kyu/lookingForABenefactor.js').benefactor;
 var getMiddle = require('../7kyu/getMiddleCharacter.js').getMiddle;
+var removeSmallest = require('../7kyu/removeTheMinimum.js').removeSmallest;
 
 describe("7kyu testing...", function() {
+  describe("Museum of incredible dull things", function(){
+    it('removes smallest number', function() {
+      assert.deepEqual(removeSmallest([1, 2, 3, 4, 5]),[2, 3, 4, 5]);
+      assert.deepEqual(removeSmallest([5, 3, 2, 1, 4]),[5, 3, 2, 4]);
+      assert.deepEqual(removeSmallest([2, 2, 1, 2, 1]),[2, 2, 2, 1]);
+      assert.deepEqual(removeSmallest([]),[]);
+    });
+  });
+
   describe("Get The Middle Character", function() {
     it('test should return the middles', function() {
       assert.equal(getMiddle("test"), "es");
