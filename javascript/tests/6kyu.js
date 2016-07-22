@@ -1,4 +1,4 @@
-var assert = require("../node_modules/chai").assert;
+import { assert } from "../node_modules/chai";
 var magicZ = require('../6kyu/MagicZeckendorf.js');
 var morseCode = require('../6kyu/DecodeMorseCode.js');
 

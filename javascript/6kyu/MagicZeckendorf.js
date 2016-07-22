@@ -1,5 +1,4 @@
-
-var MagicZ = function(){
+export const MagicZ = function(){
     var cards = [];
     cards[0]=[1,4,6,9,12,14,17,19,22,25,27,30,33,35,38,40,43,46,48,51,53,56,59,61,64,67,69,72,74,77,80,82,85,88,90,93,95,98];
     cards[1]=[2,7,10,15,20,23,28,31,36,41,44,49,54,57,62,65,70,75,78,83,86,91,96,99];
@@ -70,7 +69,7 @@ var MagicZ = function(){
         //Your Code Here
         if(n < 0)
             return;
-        result = [];
+        let result = [];
         for(var i = 0; i < cards.length; i++){
             for(var j = 0; j < cards[i].length; j++)
             {
@@ -87,4 +86,3 @@ var MagicZ = function(){
 
 };
 
-exports.MagicZ = MagicZ;

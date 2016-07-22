@@ -1,34 +1,36 @@
-exports.validate = function(n){
-   var convertInt2IntArray = function(n){
-        return ("" + n).split("").map(Number);
-    };
+export const validate = function(n) {
 
-    var arrayOfIntegers = convertInt2IntArray(n);
-    var length = arrayOfIntegers.length;
+  let total = 0;
+  var convertInt2IntArray = function(n){
+    return ("" + n).split("").map(Number);
+  };
 
-    var addArrayElements = function (tmp){
-        var total = 0;
-        for(var i = 0; i < tmp.length; i++)
-            total += tmp[i];
-        return total;
-    };
-    var isEven = length % 2 === 0;
-    var modifiedArray = arrayOfIntegers.map(function(value, index){
-        var new_value = value;
-        if (isEven && index % 2 === 0)
-            new_value = value + value;
-        else if(!isEven && index % 2 !== 0)
-            new_value = value + value;
-        if(new_value > 9)
-        {
-            var intArray = convertInt2IntArray(new_value);
-            new_value = addArrayElements(intArray);
-        }
+  var arrayOfIntegers = convertInt2IntArray(n);
+  var length = arrayOfIntegers.length;
 
-        return new_value;
-    });
+  var addArrayElements = function (tmp){
+    total = 0;
+    for(var i = 0; i < tmp.length; i++)
+      total += tmp[i];
+    return total;
+  };
+  var isEven = length % 2 === 0;
+  var modifiedArray = arrayOfIntegers.map(function(value, index){
+    var new_value = value;
+    if (isEven && index % 2 === 0)
+      new_value = value + value;
+    else if(!isEven && index % 2 !== 0)
+      new_value = value + value;
+    if(new_value > 9)
+    {
+      var intArray = convertInt2IntArray(new_value);
+      new_value = addArrayElements(intArray);
+    }
 
-    total = addArrayElements(modifiedArray);
-    return total % 10 === 0;
+    return new_value;
+  });
+
+  total = addArrayElements(modifiedArray);
+  return total % 10 === 0;
 };
 

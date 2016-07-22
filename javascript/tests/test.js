@@ -1,9 +1,10 @@
-var assert = require("../node_modules/chai").assert;
+import { assert } from "../node_modules/chai";
+import { validate } from '../creditcardvalidator.js';
 var cipher = require('../cipher.js');
 var phoneNumber = require('../createPhoneNumber.js');
-var creditcardvalidation = require('../creditcardvalidator.js');
 var pangramChecker = require('../pangramChecker.js');
-var vector = require('../vector.js');
+
+import { Vector } from '../vector.js';
 var arrayFunctions = require('../allNoneAny');
 
 describe("Kata testing...", function(){
@@ -62,19 +63,19 @@ describe("Kata testing...", function(){
     describe("Validating Credit Card Numbers", function(){
         it('Test validating using 891', function(){
             var number = 891;
-            assert.equal(creditcardvalidation.validate(number), false);
+            assert.equal(validate(number), false);
         });
         it('Test validating using 1', function(){
             var number = 1;
-            assert.isFalse(creditcardvalidation.validate(number));
+            assert.isFalse(validate(number));
         });
         it('Test validating using 2,1,2,1', function(){
             var number = 2121;
-            assert.isTrue(creditcardvalidation.validate(number));
+            assert.isTrue(validate(number));
         });
         it('Test validating using 1,2,3,0', function(){
             var number = 1230;
-            assert.isTrue(creditcardvalidation.validate(number));
+            assert.isTrue(validate(number));
         });
     });
 
@@ -86,40 +87,41 @@ describe("Kata testing...", function(){
             assert.equal(pangramChecker.isPangram(string), false);
         });
     });
+
     describe("Vector Class", function(){
         it("Test that [1,2,3] + [3,4,5] = [4,6,8]", function(){
-            var vec = new vector.Vector([1,2,3]);
-            var vec2 = new vector.Vector([3,4,5]);
-            assert.isTrue(vec.add(vec2).equals(new vector.Vector([4,6,8])));
+            const vec = new Vector([1,2,3]);
+            const vec2 = new Vector([3,4,5]);
+            assert.isTrue(vec.add(vec2).equals(new Vector([4,6,8])));
         });
         it("Test that [1,2] + [3,4] = [4,6]", function(){
-            vec = new vector.Vector([1,2]);
-            vec2 = new vector.Vector([3,4]);
-            assert.isTrue(vec.add(vec2).equals(new vector.Vector([4,6])));
+            const vec = new Vector([1,2]);
+            const vec2 = new Vector([3,4]);
+            assert.isTrue(vec.add(vec2).equals(new Vector([4,6])));
         });
         it("Test that [1,2] - [3,4] = [-2,-2]", function(){
-            vec = new vector.Vector([1,2]);
-            vec2 = new vector.Vector([3,4]);
-            assert.isTrue(vec.subtract(vec2).equals(new vector.Vector([-2,-2])));
+            const vec = new Vector([1,2]);
+            const vec2 = new Vector([3,4]);
+            assert.isTrue(vec.subtract(vec2).equals(new Vector([-2,-2])));
         });
         it("Test that [1,2,3] - [3,4,5] = [-2,-2,-2]", function(){
-            vec = new vector.Vector([1,2,3]);
-            vec2 = new vector.Vector([3,4,5]);
-            assert.isTrue(vec.subtract(vec2).equals(new vector.Vector([-2,-2,-2])));
+            const vec = new Vector([1,2,3]);
+            const vec2 = new Vector([3,4,5]);
+            assert.isTrue(vec.subtract(vec2).equals(new Vector([-2,-2,-2])));
         });
 
         it("Test that [1,2] dot [3,4] = 11", function(){
-            vec = new vector.Vector([1,2]);
-            vec2 = new vector.Vector([3,4]);
+            const vec = new Vector([1,2]);
+            const vec2 = new Vector([3,4]);
             assert.equal(vec.dot(vec2), 11);
         });
         it("Test that [1,2,3] dot [-2, 0, 5] = 13", function(){
-            vec = new vector.Vector([1,2,3]);
-            vec2 = new vector.Vector([-2, 0, 5]);
+            const vec = new Vector([1,2,3]);
+            const vec2 = new Vector([-2, 0, 5]);
             assert.equal(vec.dot(vec2), 13);
         });
         it("Test that [1,2,3] normalized = sqrt(14)", function(){
-            vec = new vector.Vector([1,2,3]);
+            const vec = new Vector([1,2,3]);
             assert.equal(vec.norm(), Math.sqrt(14));
         });
     });

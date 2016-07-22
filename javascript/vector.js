@@ -1,5 +1,4 @@
-var Vector = function(components){
-
+export const Vector = function(components){
     this.value = components;
 
     this.lengthEquals = function(rhs){
@@ -49,4 +48,3 @@ var Vector = function(components){
 Vector.prototype.toString = function (){
     return '(' + this.value.join(',') + ')';
 };
-exports.Vector = Vector;
