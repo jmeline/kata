@@ -4,6 +4,7 @@ var vowelCount = require('../7kyu/vowelCount.js');
 var benefactor = require('../7kyu/lookingForABenefactor.js').benefactor;
 var getMiddle = require('../7kyu/getMiddleCharacter.js').getMiddle;
 var removeSmallest = require('../7kyu/removeTheMinimum.js').removeSmallest;
+import { accum } from '../7kyu/mumbling.js';
 
 describe("7kyu testing...", function() {
   describe("Museum of incredible dull things", function(){
@@ -59,4 +60,33 @@ describe("7kyu testing...", function() {
       assert.equal(vowelCount.getCount('corynebacterium'), 6);
     });
   });
+
+  describe("mumbling", () => {
+    it("abcd", () => {
+      assert.equal(accum("ZpglnRxqenU"),
+        "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu");
+    });
+
+    it('NyffsGeyylB', () => {
+      assert.equal(accum("NyffsGeyylB"),
+        "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb");
+    });
+
+    it('MjtkuBovqrU', () => {
+      assert.equal(accum("MjtkuBovqrU"),
+        "M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu");
+    });
+
+    it('EvidjUnokmM', () => {
+      assert.equal(accum("EvidjUnokmM"),
+        "E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm");
+    });
+
+    it('HbideVbxncC', () => {
+      assert.equal(accum("HbideVbxncC"),
+        "H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc");
+    });
+
+
+  })
 });
