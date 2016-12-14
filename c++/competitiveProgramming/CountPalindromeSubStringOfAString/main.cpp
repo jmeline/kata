@@ -4,8 +4,9 @@
 using namespace std;
 
 bool isPalindrome(std::string str) {
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] != str[str.length() - i - 1]) {
+    int length = str.length();
+    for (int i = 0; i < length; i++) {
+        if (str[i] != str[length - i - 1]) {
             return false;
         }
     }
@@ -14,23 +15,27 @@ bool isPalindrome(std::string str) {
 
 int main() {
 	int T, N;
+  std::string currentString;
 
+  std::cout << "Enter the number of tests: ";
 	std::cin >> T;
 	for (int i = 0; i < T; i++) {
+      std::cout << "Enter text length for test(" << i << "): ";
 	    std::cin >> N;
-	    std::string currentString;
+      std::cout << "Enter text(" << i << "): ";
 	    std::cin >> currentString;
 	    std::vector<std::string> palindromes;
 
 	    std::cout << "CurrentString: " << currentString << std::endl;
-	    for (int i = 0; i < currentString.length(); i++)
+	    for (int i = 0; i < N; i++)
 	    {
-	        for (int j = i; j < currentString.length(); j++)
+	        for (int j = 2; j <= currentString.substr(i).length(); j++)
 	        {
 	            string splicedString = currentString.substr(i, j);
-	            std::cout << "splicedString: " << splicedString << " ";
+	            std::cout << "splicedString: " << splicedString << "(" << i << "," << j << ")" << " ";
 	            if (isPalindrome(splicedString))
 	            {
+                  std::cout << "\u2713";
 	                palindromes.push_back(splicedString);
 	            }
 	            std::cout << std::endl;
@@ -39,10 +44,7 @@ int main() {
 	    std::cout << "Palindromes: ";
 	    for (int i = 0; i < palindromes.size(); i++)
 	    {
-	        string c = palindromes[i];
-	        if (c.length() >= 2) {
-	            std::cout << palindromes[i] << " ";
-	        }
+        std::cout << palindromes[i] << " ";
 	    }
 	    std::cout << std::endl;
 	}
