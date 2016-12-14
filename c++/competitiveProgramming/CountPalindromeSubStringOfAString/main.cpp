@@ -41,12 +41,25 @@ int main() {
 	            std::cout << std::endl;
 	        }
 	    }
-	    std::cout << "Palindromes: ";
+      std::string max = palindromes[0],
+                  min = palindromes[0];
+
 	    for (int i = 0; i < palindromes.size(); i++)
 	    {
-        std::cout << palindromes[i] << " ";
+        std::string currentPalindrome = palindromes[i];
+        int currentLength = currentPalindrome.length();
+        if (max.length() < currentLength) max = currentPalindrome;
+        if (min.length() > currentLength) min = currentPalindrome;
 	    }
+
+	    std::cout << "Palindromes: ";
+      for (int i = 0; i < palindromes.size(); i++) {
+        std::cout << palindromes[i] << " ";
+      }
 	    std::cout << std::endl;
+      std::cout << "Max: " << max << std::endl;
+      std::cout << "Min: " << min << std::endl;
+
 	}
 
 	return 0;
