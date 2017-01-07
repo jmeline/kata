@@ -6,5 +6,4 @@
   [& args]
   (println "Hello, World!" (first args)))
 
-(def cool
-  (println "Im cool!"))
+(defn cool [] (str "Im cool!"))
