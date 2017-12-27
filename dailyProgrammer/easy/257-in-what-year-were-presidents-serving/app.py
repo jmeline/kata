@@ -1,6 +1,7 @@
 #!/usr/bin/python
-from datetime import date
 import re
+
+
 class President:
     def __init__(self, info):
         self.name = info[0].strip()
@@ -23,6 +24,7 @@ class President:
             return self.birthYear <= currentDate and self.deathYear >= currentDate
         return self.birthYear <= currentDate
 
+
 def getPresidentGen():
     """TODO: Docstring for getLineGen.
     :returns: generator
@@ -37,9 +39,17 @@ def getPresidentGen():
 # Load all data
 genFunc = getPresidentGen()
 # print(next(genFunc))
-presidents = [ i for i in genFunc ]
+presidents = [i for i in genFunc]
 print 'president length: ', len(presidents)
 for year in range(1732, 2009):
-    presidentsAlive = [ president for president in presidents if president.wasIAlive(year) ]
+    presidentsAlive = [president for president in presidents if president.wasIAlive(year)]
     print year, ": ", len(presidentsAlive)
+    for president in presidentsAlive:
+        print "\t", president.name, ",",      \
+            president.birthPlace,            \
+            "(", president.birthDate, ")",   \
+            president.deathPlace,            \
+            "(", president.deathDate, ")"
+    print
+
     # print presidents[0].wasIAlive(1732)

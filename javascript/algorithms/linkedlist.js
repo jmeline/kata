@@ -1,3 +1,7 @@
+//
+// http://blog.jeremyfairbank.com/javascript/functional-javascript-lists-1/
+// Example of functional javascript linked lists
+//
 
 var Nil = {
   isEmpty: true,
@@ -18,27 +22,19 @@ const Cons = function(head, tail) {
   }
 };
 
-Cons.prototype.map = function(fn) {
-  return cons(fn(this.head), this.tail.map(fn));
-}
-
-Nil.map = function() {
-  return this;
-}
-
 const cons = function(head, tail) {
   return new Cons(head, tail);
 }
 
-// const map = function(list, fn) {
-//   if (list.isEmpty) {
-//     return list;
-//   }
-//
-//   // returning cons means that we preserve immutablility as
-//   // we are not modifying the original list
-//   return cons(fn(list.head), map(list.tail, fn));
-// }
+const map = function(list, fn) {
+  if (list.isEmpty) {
+    return list;
+  }
+
+  // returning cons means that we preserve immutablility as
+  // we are not modifying the original list
+  return cons(fn(list.head), map(list.tail, fn));
+}
 
 const reduce = function(list, fn, initial) {
   if (list.isEmpty) {
@@ -48,6 +44,22 @@ const reduce = function(list, fn, initial) {
   return reduce(list.tail, fn, fn(initial, list.head));
 }
 
+Cons.prototype.map = function(fn) {
+  return cons(fn(this.head), this.tail.map(fn));
+}
+
+Nil.map = function() {
+  return this;
+}
+
+Cons.prototype.reduce = function(fn, initial) {
+  return this.tail.reduce(fn, fn(initial, this.head));
+}
+
+Nil.reduce = function(fn, initial) {
+  return initial;
+}
+
 const listPrinter = function(list, fn) {
   if (!list.isEmpty) {
     fn(list.toString());
@@ -55,15 +67,17 @@ const listPrinter = function(list, fn) {
   }
 }
 
+const printer = x => console.log(x);
 // let list = new Cons(1, new Cons(2, new Cons(3, new Cons(4, Nil))));
 let list = cons(1, cons(2, cons(3, cons(4, Nil))));
+console.log("original list: ");
+listPrinter(list, printer);
 
 // let mappedList = map(list, x => x * 2);
 // console.log(mappedList);
-let mappedList = list.map(x => x * x);
+let mappedList = list.map(x => x+"");
 let result = reduce(mappedList, (a,b) => a + b, 1);
 
 console.log("result from reducedList: " + result);
 console.log("Printer");
-listPrinter(mappedList, x => console.log(x));
-
+listPrinter(mappedList, printer);

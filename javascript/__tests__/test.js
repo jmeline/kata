@@ -31,7 +31,7 @@ describe("Kata testing...", function(){
     });
     describe("Simple Substitution Cipher", function(){
         var sub;
-        before(function(){
+        beforeEach(function(){
             var abc1 = "abcdefghijklmnopqrstuvwxyzi";
             var abc2 = "etaoinshrdlucmfwypvbgkjqxz";
             sub = new cipher.SubstitutionCipher(abc1, abc2);
