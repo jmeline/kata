@@ -20,13 +20,3 @@
          (else -1))
    (+ a 1))
 
-; Exercise 1.2
-(/ (+ 5 (/ 1 2) (+ 2 -3 (- 6 (/ 1 3)))) (* 3 (- 6 2) (- 2 7)))
-
-; Exercise 1.3
-; Define a procedure that takes three numbers as arguments and return the sum of the squares of the two larger numbers
-(define (max a b) (if (> a b) a b))
-(define (square x) (* x x))
-(define (sum_squares_two_numbers a b c)
-  (+ (square(max(a b))) (square(max(b c))))
-  )
